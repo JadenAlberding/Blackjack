@@ -2,11 +2,17 @@ import java.util.Random;
 
 public class Cards {
 
+
+    public static int getSum(int n){
+        return n;
+    }
+
+
     public static int getCard(){
         int card_number = 0;
 
         Random rand_card = new Random();
-        int upper = 11;
+        int upper = 12;
         card_number = rand_card.nextInt(upper);
 //        Because there is no card 0, test if it is and return a value that is not zero
         if(card_number == 0){
@@ -16,15 +22,15 @@ public class Cards {
         }
 //        System.out.println(card_number);
 
+
         return card_number;
     }
 
     public static void printnumCards(int n){
-//        Impliment get card later
 
 
 
-        if(n == 1 ){
+        if(n == 1 || n == 11){
             System.out.print( "╭----------------╮\n" +
                               "| A              |\n" +
                               "|                |\n" +
@@ -171,20 +177,6 @@ public class Cards {
 
             );
 
-        }else if(n == 11){
-            System.out.print( "╭----------------╮\n" +
-                    "| A              |\n" +
-                    "|                |\n" +
-                    "|                |\n" +
-                    "|      /-\\       |\n" +
-                    "|     /   \\      |\n" +
-                    "|    /-----\\     |\n"+
-                    "|   /       \\    |\n" +
-                    "|                |\n"+
-                    "|              A |\n" +
-                    "╰----------------╯\n"
-
-            );
         }
     }
 

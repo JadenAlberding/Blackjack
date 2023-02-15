@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         Cards Hello = new Cards();
-
+//      Prompts the user
         System.out.println("Hello player. Ready to play?");
         Scanner yn = new Scanner(System.in);
         String yesOrNo;
@@ -13,6 +13,7 @@ public class Main {
         String yes = yesOrNo;
 //            System.out.println(yes);
         int playAgain = 1;
+//      Allows the player to play multiple times in a row until player stops
         while(playAgain == 1){
             playAgain = 0;
             if (yes == yesOrNo) {
@@ -26,7 +27,7 @@ public class Main {
                     System.out.println("Something went wrong. Try again");
                 }
             }
-
+//          Deals the cards to the player using random input
             int sum_of_cards = 0;
             for (int i = 1; i < 3; i++) {
                 int card = Cards.getCard();
@@ -36,6 +37,12 @@ public class Main {
                     Cards.printnumCards(card);
                 } catch (Exception x) {
                     System.out.println("Error");
+                }
+//               tests if ace can be 11 or 1
+                if(card == 1 && sum_of_cards +11 <= 21){
+                    card = 11;
+                }else if(card == 11 && sum_of_cards + 11 > 21){
+                    card = 1;
                 }
 
                 sum_of_cards += card;
@@ -59,6 +66,12 @@ public class Main {
                 if (answer_final.equals("Hit") || answer_final.equals("hit")) {
                     int hit_card = Cards.getCard();
                     Cards.printnumCards(hit_card);
+//                   Determines wether the ace should be 11 or 1 for hit card
+                    if(hit_card == 1 && sum_of_cards +11 <= 21){
+                        hit_card = 11;
+                    }else if(hit_card == 11 && sum_of_cards + 11 > 21){
+                        hit_card = 1;
+                    }
                     sum_of_cards += hit_card;
 
                 } else if (answer_final.equals("Stand") || answer_final.equals("stand")) {
@@ -117,7 +130,12 @@ public class Main {
                     } catch (Exception e) {
                         System.out.println("Error");
                     }
-
+//                  Determines the value of ace
+                    if(hit_card == 1 && sum_of_cards +11 <= 21){
+                        hit_card = 11;
+                    }else if(hit_card == 11 && sum_of_cards + 11 > 21){
+                        hit_card = 1;
+                    }
                     dealerCards += hit_card;
 
 
