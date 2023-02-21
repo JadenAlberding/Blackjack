@@ -1,11 +1,45 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Cards Hello = new Cards();
+
+        File usernames = new File("Usernames.txt");
+        if(usernames.createNewFile()) {
+            System.out.println("File created: " + usernames);
+        }else {
+            System.out.println("File already exists");
+        }
+
 //      Prompts the user
-        System.out.println("Hello player. Ready to play?");
+        System.out.println("Hello user. Enter your username to begin");
+
+        Scanner user = new Scanner(System.in);
+        String username;
+        username = user.nextLine();
+        Username.findUser(username, usernames);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        System.out.println("Ready to play?");
         Scanner yn = new Scanner(System.in);
         String yesOrNo;
 
@@ -131,13 +165,18 @@ public class Main {
                         System.out.println("Error");
                     }
 //                  Determines the value of ace
-                    if(hit_card == 1 && sum_of_cards +11 <= 21){
+                    if(hit_card == 1 && dealerCards +11 <= 21){
                         hit_card = 11;
-                    }else if(hit_card == 11 && sum_of_cards + 11 > 21){
+                    }
+                    if(hit_card == 11 && dealerCards + 11 > 21){
                         hit_card = 1;
                     }
-                    dealerCards += hit_card;
 
+                    dealerCards += hit_card;
+                    if(dealerCards > sum_of_cards){
+                        System.out.println("Dealers cards add up to " + dealerCards);
+                        break;
+                    }
 
                     System.out.println("Dealers cards add up to " + dealerCards);
 
